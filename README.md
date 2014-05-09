@@ -1,7 +1,7 @@
-MyRedis What's news?
+Redis+ What's news?
 --------------------
 
-MyRedis supports mysql, event expiring and etc...
+Redis+ supports new features.
 
 ### Expiring Key Event
 
