@@ -30,6 +30,7 @@
 #include "redis.h"
 #include "slowlog.h"
 #include "bio.h"
+#include "myredis_expiring.h"
 
 #include <time.h>
 #include <signal.h>
@@ -658,6 +659,15 @@ int activeExpireCycleTryExpire(redisDb *db, struct dictEntry *de, long long now)
     if (now > t) {
         sds key = dictGetKey(de);
         robj *keyobj = createStringObject(key,sdslen(key));
+
+
+        // add new feature that notify value of key when key expiring
+		dictEntry *de = dictFind(db->dict,keyobj->ptr);
+		if (de) {
+			robj *val = dictGetVal(de);
+			notifyKeyspaceExpiringEvent(REDIS_NOTIFY_EXPIRING, "expiring",keyobj,val,db->id);
+		}
+
 
         propagateExpire(db,keyobj);
         dbDelete(db,keyobj);
