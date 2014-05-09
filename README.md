@@ -1,3 +1,51 @@
+MyRedis What's news?
+--------------------
+
+MyRedis supports mysql, event expiring and etc...
+
+### Expiring Key Event
+
+**Expiring key event can retrieves key and value.**  
+Why we needs it because is not possible to get value of key when *Expired Event*. *You just retrieves the key.*
+
+So, For implements like as sync or processing value, needs just the **Redis's Expiring Event**.
+
+##### First, you should be set to subscribe keyspace-events
+```
+> config set notify-keyspace-events KEA
+> PSUBSCRIBE '__key*__:expiring'
+```
+
+##### When keys expiring before expired.
+
+```
+SET mykey "you can get key and value" ex 3
+```
+
+##### 3 seconds past. Subscribed mykey is
+
+```
+1) "pmessage"
+2) "__key*__:expiring"
+3) "__keyevent@0__:expiring"
+4) "mykey"
+5) "you can get key and value"   << IMPORTANT: You got it is value of key.
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+# *This is original readme of redis*
+
 Where to find complete Redis documentation?
 -------------------------------------------
 
