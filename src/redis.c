@@ -30,7 +30,7 @@
 #include "redis.h"
 #include "slowlog.h"
 #include "bio.h"
-#include "myredis_expiring.h"
+#include "redisplus_expiring.h"
 
 #include <time.h>
 #include <signal.h>
