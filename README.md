@@ -1,5 +1,4 @@
-Redis+ What's news?
---------------------
+# Redis+ What's news?
 
 Redis+ supports new features.
 
