@@ -1,3 +1,6 @@
+Junil Um  
+http://blog.powerumc.kr
+
 # Redis+ What's news?
 
 Redis+ supports new features.
